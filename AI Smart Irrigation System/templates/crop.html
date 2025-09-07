@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</head>
+<body>
+    <h1>Crop Prediction</h1>
+    <form method="post" action="/predict_crop">
+        <div>
+            <label for="N">Nitrogen (N):</label>
+            <input type="number" step="any" name="N" required>
+        </div>
+        <div>
+            <label for="P">Phosphorous (P):</label>
+            <input type="number" step="any" name="P" required>
+        </div>
+        <div>
+            <label for="K">Potassium (K):</label>
+            <input type="number" step="any" name="K" required>
+        </div>
+        <div>
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="any" name="temperature" required>
+        </div>
+        <div>
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" step="any" name="humidity" required>
+        </div>
+        <div>
+            <label for="ph">Soil pH:</label>
+            <input type="number" step="any" name="ph" required>
+        </div>
+        <div>
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="number" step="any" name="rainfall" required>
+        </div>
+
+        <button type="submit">Predict Crop</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <h2>Prediction Result:</h2>
+            <p>{{ result }}</p>
+        </div>
+    {% endif %}
+
+    <a href="/" class="back-home">← Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "CROP_BASE_MM_PER_WEEK": {
+    "apple": 35,
+    "banana": 55,
+    "grapes": 40,
+    "mango": 45,
+    "orange": 40,
+    "papaya": 55,
+    "pomegranate": 45,
+    "muskmelon": 35,
+    "watermelon": 40,
+    "coconut": 60,
+    "coffee": 55,
+    "cotton": 45,
+    "jute": 50,
+    "rice": 65,
+    "maize": 45,
+    "blackgram": 30,
+    "chickpea": 30,
+    "kidneybeans": 32,
+    "lentil": 28,
+    "mothbeans": 26,
+    "mungbean": 26,
+    "pigeonpeas": 35
+  },
+  "SOIL_MULTIPLIER": {
+    "Red and Yellow soils": 1.1,
+    "Alluvial soils": 1.0,
+    "Laterite soils": 1.15,
+    "Black soils": 0.85
+  },
+  "TEMP_INCREASE_PER_C_ABOVE_30": 0.03,
+  "HUMIDITY_REDUCTION_PER_PC_ABOVE_60": 0.01,
+  "MAX_HUMIDITY_REDUCTION": 0.25,
+  "SOIL_TYPES": [
+    "Red and Yellow soils",
+    "Alluvial soils",
+    "Laterite soils",
+    "Black soils"
+  ]
+}

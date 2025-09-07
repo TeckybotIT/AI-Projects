@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Irrigation Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</head>
+<body>
+    <h1>Irrigation Calculator</h1>
+    <form method="post" action="/irrigation">
+        <div>
+            <label for="soil_type">Soil Type:</label>
+            <select name="soil_type" required>
+                <option value="Red and Yellow soils">Red and Yellow soils</option>
+                <option value="Alluvial soils">Alluvial soils</option>
+                <option value="Laterite soils">Laterite soils</option>
+                <option value="Black soils">Black soils</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="N">Nitrogen (N):</label>
+            <input type="number" step="any" name="N" required>
+        </div>
+
+        <div>
+            <label for="P">Phosphorous (P):</label>
+            <input type="number" step="any" name="P" required>
+        </div>
+
+        <div>
+            <label for="K">Potassium (K):</label>
+            <input type="number" step="any" name="K" required>
+        </div>
+
+        <div>
+            <label for="temperature">Temperature (°C):</label>
+            <input type="number" step="any" name="temperature" required>
+        </div>
+
+        <div>
+            <label for="humidity">Humidity (%):</label>
+            <input type="number" step="any" name="humidity" required>
+        </div>
+
+        <div>
+            <label for="ph">Soil pH:</label>
+            <input type="number" step="any" name="ph" required>
+        </div>
+
+        <div>
+            <label for="rainfall">Rainfall (mm/week):</label>
+            <input type="number" step="any" name="rainfall" required>
+        </div>
+
+        <div>
+            <label for="area">Farm Area:</label>
+            <input type="number" step="any" name="area" value="1" required>
+        </div>
+
+        <div>
+            <label for="area_unit">Area Unit:</label>
+            <select name="area_unit">
+                <option value="ha" selected>hectares (ha)</option>
+                <option value="acre">acres</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="row_spacing_m">Row Spacing (m):</label>
+            <input type="number" step="any" name="row_spacing_m" value="0" placeholder="Optional">
+        </div>
+
+        <div>
+            <label for="plant_spacing_m">Plant Spacing (m):</label>
+            <input type="number" step="any" name="plant_spacing_m" value="0" placeholder="Optional">
+        </div>
+
+        <button type="submit">Calculate Irrigation</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <h2>Irrigation Result</h2>
+
+            {% if result is string %}
+                <p>{{ result }}</p>
+            {% else %}
+                <table>
+                    <tr><th>Predicted Crop</th><td>{{ result["Predicted Crop"] }}</td></tr>
+                    <tr><th>Soil Type</th><td>{{ result["Soil Type"] }}</td></tr>
+                    <tr><th>Irrigation (mm/week)</th><td>{{ result["Irrigation (mm/week)"] }}</td></tr>
+                    <tr><th>Water Need (m³/ha)</th><td>{{ result["Water Need (m³/ha)"] }}</td></tr>
+                    <tr><th>Water Need (liters/ha)</th><td>{{ result["Water Need (liters/ha)"] }}</td></tr>
+                    <tr><th>Total Water Need (m³)</th><td>{{ result["Total Water Need (m³)"] }}</td></tr>
+                    <tr><th>Total Water Need (liters)</th><td>{{ result["Total Water Need (liters)"] }}</td></tr>
+                    <tr><th>Category</th><td>{{ result["Category"] }}</td></tr>
+                </table>
+
+                <h3>Breakdown</h3>
+                <ul>
+                    {% for key, val in result["Breakdown"].items() %}
+                        <li>{{ key }}: {{ val }}</li>
+                    {% endfor %}
+                </ul>
+
+                {% if result.get("Per-plant estimate") %}
+                <h3>Per-Plant Estimate</h3>
+                <ul>
+                    <li>Plants per hectare: {{ result["Per-plant estimate"]["Plants per hectare"] }}</li>
+                    <li>Liters per plant per week: {{ result["Per-plant estimate"]["Liters per plant per week"] }}</li>
+                </ul>
+                {% endif %}
+
+                <h3>Notes</h3>
+                <div class="notes">
+                    <ul>
+                        {% for note in result["Notes"] %}
+                            <li>{{ note }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <a href="/" class="back-home">← Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* ---------- Global Styles ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Aptos:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Aptos', Arial, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #2e7d32;
+    font-size: 2.4rem;
+    margin-top: 40px;
+    margin-bottom: 35px;
+    font-weight: bold;
+}
+
+/* ---------- Index Page Styles ---------- */
+.description p {
+    text-align: justify;
+    line-height: 1.7;
+    font-size: 16px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+/* Info sections */
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+}
+
+.info-box h2 {
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-size: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 6px;
+}
+
+.info-box ul {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.6;
+}
+
+/* ---------- Button Section (Index Page) ---------- */
+.button-section {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.button-section a {
+    display: inline-block;
+    margin: 12px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Color-coded buttons */
+.button-crop {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+}
+.button-crop:hover {
+    background: linear-gradient(135deg, #66bb6a, #388e3c);
+    transform: translateY(-3px);
+}
+
+.button-soil {
+    background: linear-gradient(135deg, #8d6e63, #5d4037);
+}
+.button-soil:hover {
+    background: linear-gradient(135deg, #a1887f, #4e342e);
+    transform: translateY(-3px);
+}
+
+.button-irrigation {
+    background: linear-gradient(135deg, #42a5f5, #1565c0);
+}
+.button-irrigation:hover {
+    background: linear-gradient(135deg, #64b5f6, #1976d2);
+    transform: translateY(-3px);
+}
+
+/* ---------- Crop/Soil/Irrigation Page Styles ---------- */
+form {
+    background-color: #fff;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 36px 36px 24px 36px;
+    border-radius: 14px;
+    box-shadow: 0 3px 14px rgba(44,62,80,.08);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 30px;
+}
+
+/* Crop selector spans full width */
+.form-row:first-child {
+    grid-column: 1 / -1;
+}
+
+/* Compatible input spans full width */
+.form-row:last-child {
+    grid-column: 1 / -1;
+}
+
+.form-row {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 11px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.form-row label {
+    font-weight: 600;
+    font-size: 1.02rem;
+    margin-bottom: 6px;
+    min-width: 170px;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+input[type="number"]:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #c8ccd1;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: #f8fafc;
+    transition: border 0.2s;
+    margin-bottom: 4px;
+}
+
+input:focus, select:focus {
+    border-color: #2e7d32;
+    outline: none;
+}
+
+.submit-btn, button {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+button:hover, .submit-btn:hover {
+    background: linear-gradient(135deg, #5dade2, #2471a3);
+    transform: translateY(-2px);
+}
+
+/* ---------- Result Boxes ---------- */
+.result {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    color: #2c3e50;
+}
+
+.result h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.result table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.result th, .result td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.result th {
+    background-color: #f0f3f5;
+}
+
+.notes {
+    background-color: #e8f4fd;
+    border-left: 5px solid #3498db;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+.error {
+    color: #d32f2f;
+    background: #fbe9e7;
+    padding: 14px;
+    border-radius: 7px;
+    margin-top: 22px;
+    text-align: center;
+    font-weight: 500;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result {
+    background: #f0f0f0;
+    padding: 23px 28px;
+    border-radius: 10px;
+    margin: 34px auto 0 auto;
+    max-width: 600px;
+    color: #2c3e50;
+    box-shadow: 0 2px 8px rgba(44,62,80,.08);
+}
+
+.result h2, .result h3 {
+    color: #2e7d32;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.result ul {
+    padding-left: 22px;
+    list-style-type: disc;
+    font-size: 1rem;
+}
+
+.back-home {
+    display: block;
+    width: fit-content;
+    margin: 32px auto 0 auto;
+    color: #1565c0;
+    text-decoration: none;
+    font-size: 1.07rem;
+    font-weight: 600;
+}
+
+.back-home:hover {
+    color: #1b45a2;
+    text-decoration: underline;
+}

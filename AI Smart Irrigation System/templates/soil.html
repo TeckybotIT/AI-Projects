@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Best Soil Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
+</head>
+<body>
+    <h1>Best Soil Prediction</h1>
+    <form method="post" action="/soil">
+        <!-- 1. Crop_Type -->
+        <div class="form-row">
+            <label for="Crop_Type"><strong>Select Crop:</strong></label>
+            <select name="Crop_Type" id="Crop_Type" required>
+                <option value="summer paddy">Summer Paddy</option>
+                <option value="Kulthi">Kulthi</option>
+                <option value="Arhar">Arhar</option>
+                <option value="Gram">Gram</option>
+                <option value="Pea">Pea</option>
+                <option value="Soybean">Soybean</option>
+                <option value="Maize">Maize</option>
+                <option value="Rice">Rice</option>
+                <option value="Mustard">Mustard</option>
+                <option value="Urd">Urd</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Masoor">Masoor</option>
+                <option value="Millets">Millets</option>
+                <option value="Groundnut">Groundnut</option>
+                <option value="Niger">Niger</option>
+                <option value="Tiwra">Tiwra</option>
+                <option value="Til">Til</option>
+                <option value="Moong">Moong</option>
+                <option value="Jwar">Jwar</option>
+            </select>
+        </div>
+        <!-- 2. Farm_Size_Acres & 3. Irrigation_Available -->
+        <div class="form-row">
+            <div>
+                <input type="number" step="0.01" name="Farm_Size_Acres" required placeholder="Farm Size (Acres)">
+            </div>
+            <div>
+                <input type="number" min="0" max="1" name="Irrigation_Available" required placeholder="Irrigation Available (1=Yes, 0=No)">
+            </div>
+        </div>
+        <!-- 4. Soil_pH & 5. Soil_Nitrogen -->
+        <div class="form-row">
+            <div>
+                <input type="number" step="0.01" name="Soil_pH" required placeholder="Soil pH">
+            </div>
+            <div>
+                <input type="number" step="0.01" name="Soil_Nitrogen" required placeholder="Soil Nitrogen (%)">
+            </div>
+        </div>
+        <!-- 6. Soil_Organic_Matter & 7. Temperature -->
+        <div class="form-row">
+            <div>
+                <input type="number" step="0.01" name="Soil_Organic_Matter" required placeholder="Soil Organic Matter (%)">
+            </div>
+            <div>
+                <input type="number" step="0.1" name="Temperature" required placeholder="Temperature (°C)">
+            </div>
+        </div>
+        <!-- 8. Rainfall & 9. Humidity -->
+        <div class="form-row">
+            <div>
+                <input type="number" step="0.1" name="Rainfall" required placeholder="Rainfall (mm)">
+            </div>
+            <div>
+                <input type="number" step="0.1" name="Humidity" required placeholder="Humidity (%)">
+            </div>
+        </div>
+        <!-- 10. Compatible -->
+        <div class="form-row">
+            <input type="number" min="0" max="1" name="Compatible" required placeholder="Compatible (1=Yes, 0=No)">
+        </div>
+        <button type="submit" class="submit-btn">Predict Best Soil</button>
+    </form>
+
+    {% if result %}
+        {% if result.Error %}
+            <div class="error">{{ result.Error }}</div>
+        {% else %}
+            <div class="result">
+                <h2>Prediction Result:</h2>
+                <p><strong>Best Soil:</strong> {{ result.Best_Soil }}</p>
+                <h3>Probabilities:</h3>
+                <ul>
+                    {% for soil, prob in result.Probabilities.items() %}
+                        <li>{{ soil }}: {{ "%.2f"|format(prob*100) }}%</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <a href="/" class="back-home">← Back to Home</a>
+</body>
+</html>
