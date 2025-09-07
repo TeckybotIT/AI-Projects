@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 85%;
+  margin: 15px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.about, .map, .upload, .result-info, .result-image {
+  background: #fff;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+button, .back-btn {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+button:hover, .back-btn:hover {
+  background: #1e8449;
+}
+
+.map-img, .result-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* 🔹 Layout for result page */
+.result-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 25px;
+  text-align: left;
+}
+
+.result-info {
+  flex: 1.2;
+}
+
+.result-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.result-info ul li {
+  background: #e8f5e9;
+  margin: 6px 0;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.result-image {
+  flex: 0.8;
+  text-align: center;
+}
+
+.highlight {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}

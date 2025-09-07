@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🧾 Prediction Result</h1>
+
+    <div class="result-container">
+      <!-- Left side: Prediction + Crops + Info -->
+      <div class="result-info">
+        <h2>Predicted Soil Type: <span class="highlight">{{ soil_type }}</span></h2>
+
+        <h3>🌱 Suitable Crops:</h3>
+        <ul>
+          {% for crop in crops %}
+            <li>{{ crop }}</li>
+          {% endfor %}
+        </ul>
+
+        <h3>📍 Regions Found:</h3>
+        <p>{{ soil_regions }}</p>
+
+        <h3>ℹ️ About {{ soil_type }} Soil</h3>
+        <p>{{ soil_info }}</p>
+      </div>
+
+      <!-- Right side: Uploaded Image -->
+      <div class="result-image">
+        <h3>Uploaded Image:</h3>
+        <img src="{{ image_path }}" alt="Uploaded Image">
+      </div>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="back-btn">🔙 Back to Home</a>
+  </div>
+</body>
+</html>

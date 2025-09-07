@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Soil Classification</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="{{ url_for('static', filename='logo.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 30px;
+      gap: 30px;
+    }
+
+    .left-box, .right-box {
+      width: 50%;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .right-box {
+      text-align: center;
+    }
+
+    .right-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 30px;
+      color: #2c3e50;
+    }
+
+    .about {
+      margin-bottom: 5px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    input[type="file"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1a242f;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌱 Soil Classification & Crop Suggestion</h1>
+  <div class="container">
+    <!-- Left side: About + Upload -->
+    <div class="left-box">
+      <div class="about" style="text-align: justify; font-size: 14px; line-height: 1.6;">
+        <h2>About this Project</h2>
+        <p>
+          Soil classification plays a vital role in agriculture as it helps farmers identify the right type of soil 
+          for specific crops, improve productivity, and make better use of resources. Traditionally, soil identification 
+          is done manually, which is time-consuming, less accurate, and often requires expert knowledge.
+        </p>
+        <p>
+          To overcome these drawbacks, we designed a deep learning-based soil classification system that analyzes 
+          soil images and predicts the correct soil type. Our model is capable of identifying seven major Indian soils 
+          — Alluvial, Arid, Black, Laterite, Mountain, Red, and Yellow — and also suggests the most suitable crops 
+          for each soil type.
+        </p>
+        <p>
+          With a training accuracy of <b>91%</b>, this project demonstrates how AI can effectively support farmers 
+          in making data-driven agricultural decisions.
+        </p>
+      </div>
+
+      <form action="/predict" method="post" enctype="multipart/form-data">
+        <h3>Upload Soil Image</h3>
+        <div class="form-row">
+          <input type="file" name="file" required>
+          <button type="submit">🔍 Predict Soil Type</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right side: Indian Soil Map -->
+    <div class="right-box">
+      <h2>🗺 Indian Soil Map</h2>
+      <img src="{{ url_for('static', filename='india_soil_map.png') }}" alt="Indian Soil Map">
+    </div>
+  </div>
+</body>
+</html>
